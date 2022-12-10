@@ -12,7 +12,8 @@
 
 `db.ts`
 ```ts
-import dooby from "@dooby/dooby";
+import dooby, { ABSModel } from "@dooby/dooby";
+// You do not require ABSModel but it gives you better support in code editors.
 import adapter from "@dooby/adapter-???";
 
 const Dooby = dooby({
@@ -28,30 +29,30 @@ const Dooby = dooby({
 })
 
 @Dooby.$.model({ name: "user" })
-class User {
+class User extends ABSModel {
     @Dooby.$.field({ name: "username", type: String }) static username: any /* type here doesnt really matter since it will only be used to create the model */
     @Dooby.$.field({ name: "posts", type: String, array: true, reference: { name: "Ref-post-user" /*must be the same as name from post*/, from: "user", field: "%id" } }) static posts: any
     
-    static stringify() {
-        return this.username
+    static stringify(): string {
+        return JSON.stringify(this)
     }
 
-    static fromString() {
-        return this
+    static fromString(string: string): any {
+        return JSON.parse(string)
     }
 }
 
 @Dooby.$.model({ name: "post" })
-class Post {
+class Post extends ABSModel {
     @Dooby.$.field({ name: "author", type: String, reference: { name: "Ref-post-user" /*must be the same as name from user*/, from: "user", field: "%id" } }) static author: any
     @Dooby.$.field({ name: "body", type: String }) static body: any
     
-    static stringify() {
-        return this.body
+    static stringify(): string {
+        return JSON.stringify(this)
     }
 
-    static fromString() {
-        return this
+    static fromString(string: string): any {
+        return JSON.parse(string)
     }
 }
 

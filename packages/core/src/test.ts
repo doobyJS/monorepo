@@ -1,4 +1,4 @@
-import dooby from "./index.js";
+import dooby, { ABSModel } from "./index.js";
 
 const db = {  }
 
@@ -22,14 +22,12 @@ const Dooby = dooby({
 
 
 @Dooby.$.model({ __id: Number, name: "user" })
-class User {
+class User extends ABSModel {
     @Dooby.$.field({ name: "username", type: String }) static username: any
-    
-    static stringify() {
-        return this.username
+    static stringify(): string {
+        return JSON.stringify(this)
     }
-
-    static fromString() {
-        return this
+    static fromString(string: string): any {
+        return JSON.parse(string)
     }
 }

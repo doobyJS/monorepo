@@ -4,10 +4,11 @@ try {
 } catch(e) {
     if(!(e instanceof ReferenceError)) throw new Error("Safety error: Dooby should not be run on the client")
 }
-// Type For constructor
+
+// abstract type for all Models
 export abstract class ABSModel {
-    abstract stringify(): string
-    abstract fromString(): any
+    static stringify(): string { throw new Error("Not Implemented") }
+    static fromString(string: string): any { throw new Error("Not Implemented") }
 }
 
 export type DoobyEnum = {
@@ -65,7 +66,7 @@ export type Dooby = {
 }
 
 import { writable } from "svelte/store"
-import createDecorators from "./decs.js"
+import createDecorators from "./decor.js"
 
 export default function dooby(config: DoobyConfig): Dooby {
     const models = writable<Record<string, Model<any>>>({})
