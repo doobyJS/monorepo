@@ -14,16 +14,16 @@
 ```ts
 import dooby, { ABSModel } from "@dooby/dooby";
 // You do not require ABSModel but it gives you better support in code editors.
-import adapter from "@dooby/adapter-???";
+import adapter from "@dooby/adapter-replit";
 
 const Dooby = dooby({
-    adapter: adapter(0, "", [], {}, () => {}),
+    adapter: adapter("https://kv.replit.com/v0/JWTVALUE"),
     id: {
         generate: () => {
-            // id cannot start with ?
+            // id must be string and cannot start with '?'
             return nanoid(10)
         },
-        // if false ids are modelname:id else objects have a _model property
+        // if false ids are modelname:id else objects have a _model property. false by default
         global: true
     }
 })
