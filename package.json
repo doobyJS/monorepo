@@ -1,0 +1,10 @@
+{
+  "name": "dooby-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^5.5.1"
+  }
+}

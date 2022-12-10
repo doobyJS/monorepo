@@ -1,0 +1,6 @@
+{
+    "monoWorkspace.folders.custom": [
+        {"regex":"core", "prefix": "🔵"},
+        {"regex":"adapter-", "prefix": "🔄"}
+    ]
+}
