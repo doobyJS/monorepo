@@ -1,5 +1,12 @@
-
-
+1. Replit adapter
+1. Base Data
+1. Create docs
+1. Release: 0.9.0a
+1. Arrays
+1. Release 0.9.0b 
+1. Relashionships with reference value
+1. Release 1.0.0
+1. More adapters?
 
 # Main idea
 
@@ -56,5 +63,5 @@ export default Dooby.createDB()
 `route.ts`
 ```ts
 import db from './db.js'
-db.
+await db.stuffhappens()
 ```
