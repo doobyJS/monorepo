@@ -17,6 +17,7 @@
     "typescript": "^5.0.0-dev.20221209"
   },
   "dependencies": {
+    "reflect-metadata": "^0.1.13",
     "svelte": "^3.54.0"
   }
 }

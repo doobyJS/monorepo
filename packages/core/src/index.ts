@@ -5,7 +5,7 @@ try {
     if(!(e instanceof ReferenceError)) throw new Error("Safety error: Dooby should not be run on the client")
 }
 // Type For constructor
-abstract class ABSModel {
+export abstract class ABSModel {
     abstract stringify(): string
     abstract fromString(): any
 }
@@ -49,12 +49,12 @@ export type DoobyConfig = {
     adapter: Adapter,
 }
 
-type PropertyDecorator = (target: Object, propertyKey: string, parameterIndex: number) => void
+type PropertyDecorator<T> = (target: T, propertyKey: string, parameterIndex?: number) => void
 type ClassDecorator = <C extends ABSModel>(C: C) => void
 
 export type Decoorators = {
     model(data: ModelConfig): ClassDecorator,
-    field(data: Property): PropertyDecorator
+    field<T>(data: Property): PropertyDecorator<T>
 }
 
 export type Dooby = {

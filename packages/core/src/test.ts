@@ -23,8 +23,7 @@ const Dooby = dooby({
 
 @Dooby.$.model({ __id: Number, name: "user" })
 class User {
-    // @ts-ignore
-    @Dooby.$.field({ name: "username", type: String }) static username: string
+    @Dooby.$.field({ name: "username", type: String }) static username: any
     
     static stringify() {
         return this.username
